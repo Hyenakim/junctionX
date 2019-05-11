@@ -1,10 +1,14 @@
 package com.example.junctionx;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,24 +18,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
-    private EditText destination;
     private TextView test;
     private AutoCompleteTextView act;
+    private String position[] = {"건대입구역2호선","건국대학교병원","건국대학교 서울캠퍼스"};
+    private SharedPreferences preference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        preference = getSharedPreferences("a",MODE_PRIVATE);
+        int firstviewshow = preference.getInt("First",0);
+        firstviewshow = 0;
+        if(firstviewshow != 1){
+            Intent intent = new Intent(MainActivity.this,FirstStartActivity.class);
+            startActivity(intent);
+        }
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        destination = findViewById(R.id.input_destination);
-        test = (TextView)findViewById(R.id.test);
+        act = (AutoCompleteTextView)findViewById(R.id.list_destination);
+        test = findViewById(R.id.test);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //getSupportActionBar().hide();   //툴바 안보이게 하기ws
@@ -55,22 +69,18 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //목적지 작성 후
-        destination.addTextChangedListener(new TextWatcher() {
+        act.setOnKeyListener(new View.OnKeyListener(){
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                test.setText(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode== KeyEvent.KEYCODE_ENTER) {//제출
+                    test.setText(act.getText());
+                    return true;
+                }
+                return false;
             }
         });
+        act.setAdapter(new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1,position));
+
     }
 
     @Override

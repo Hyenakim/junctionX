@@ -24,13 +24,13 @@
             android:background="@drawable/shadowfile"
             android:elevation="10dp"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
-            <EditText
-                android:id="@+id/input_destination"
-                android:layout_width="wrap_content"
+            <AutoCompleteTextView
+                android:id="@+id/list_destination"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine = "true"
-                android:lines = "1"
+                android:lines="1"
                 android:hint="도착지 검색은 여기서!"/>
+                />
         </android.support.v7.widget.Toolbar>
 
         <TextView
