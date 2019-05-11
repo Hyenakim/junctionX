@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
+                android:fontFamily="@font/spoqaregular"
                 android:hint="도착지 검색은 여기서!"/>
                 />
         </android.support.v7.widget.Toolbar>
