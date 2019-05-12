@@ -3,6 +3,6 @@
     <font>
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/spoqaregular"
+        android:font="@font/sqoqaregular2"
     </font>
 </font-family>

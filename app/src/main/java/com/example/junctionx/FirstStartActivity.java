@@ -43,19 +43,24 @@ public class FirstStartActivity extends AppCompatActivity {
         }
         @Override
         public int getCount() {
-            return 2;
+            return 4;
         }
         @Override
         public Object instantiateItem(ViewGroup pager, int position) {
             View v = null;
-//position별로 페이지 각 해당 페이지에 불러올 레이아웃을 설정.
+            //position별로 페이지 각 해당 페이지에 불러올 레이아웃을 설정.
             if (position == 0) {
                v = mInflater.inflate(R.layout.firststartview1, null);
                v.findViewById(R.id.first);
             } else if (position == 1) {
                v = mInflater.inflate(R.layout.firststartview2, null);
                v.findViewById(R.id.second);
-               v.findViewById(R.id.close).setOnClickListener(mCloseButtonClick);
+            } else if(position==2){
+                v = mInflater.inflate(R.layout.firststartview3, null);
+                v.findViewById(R.id.third);
+            }else if(position==3){
+                v = mInflater.inflate(R.layout.firststartview4, null);
+                v.findViewById(R.id.close).setOnClickListener(mCloseButtonClick);
             }
             ((ViewGroup) pager).addView(v, 0);
             return v;

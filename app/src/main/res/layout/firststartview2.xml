@@ -3,16 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:orientation="vertical">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/close"/>
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_weight="1">
     <ImageView
+        android:src="@drawable/tutorial2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/design_default_color_primary"
+        android:background="@android:color/white"
         android:id="@+id/second"/>
 
 </LinearLayout>
