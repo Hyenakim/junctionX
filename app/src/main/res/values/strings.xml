@@ -6,4 +6,6 @@
     <string name="nav_header_subtitle">Order Remote, Eat Out!</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="str_start">Start</string>
+    <string name="str_stop">Stop</string>
 </resources>
